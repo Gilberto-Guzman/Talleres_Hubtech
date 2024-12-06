@@ -39,7 +39,7 @@ https://sqlbolt.com/
 
     SELECT * FROM Movies;
 
-### 4. Consultas con restricciones
+### 4. Consultas con restricciones.
 
     SELECT Id, Title FROM Movies
     WHERE Id = 6;
@@ -53,7 +53,7 @@ https://sqlbolt.com/
     SELECT Title, Year FROM Movies
     WHERE Year <= 2003;
 
-### 5. Consultas con restricciones Case sensitive y Case insensitive
+### 5. Consultas con restricciones Case sensitive y Case insensitive.
 
     SELECT Title, Director FROM Movies
     WHERE Title LIKE "Toy Story%";
@@ -66,3 +66,66 @@ https://sqlbolt.com/
 
     SELECT * FROM Movies
     WHERE Title LIKE "WALL-_";
+
+### 6. Filtrado y ordenamiento de los resultados de las consultas.
+
+    SELECT DISTINCT Director FROM Movies
+    ORDER BY Director ASC;
+
+    SELECT Title, Year FROM Movies
+    ORDER BY Year DESC
+    LIMIT 4;
+
+    SELECT Title FROM Movies
+    ORDER BY Title ASC
+    LIMIT 5;
+
+    SELECT Title FROM Movies
+    ORDER BY Title ASC
+    LIMIT 5 OFFSET 5;
+
+### 7. Simple SELECT Queries
+
+    SELECT City, Population FROM north_american_cities
+    WHERE Country = "Canada";
+
+    SELECT City, latitude FROM north_american_cities
+    WHERE Country = "United States"
+    ORDER BY latitude DESC;
+
+    SELECT City, longitude FROM north_american_cities
+    WHERE longitude < -87.629798
+    ORDER BY longitude ASC;
+
+    SELECT City, Population FROM north_american_cities
+    WHERE Country LIKE "Mexico"
+    ORDER BY Population DESC
+    LIMIT 2;
+
+    SELECT City, Population FROM north_american_cities
+    WHERE Country LIKE "United States"
+    ORDER BY Population DESC
+    LIMIT 2 OFFSET 2;
+
+### 8. Consulta de varias tablas con JOINS
+
+    SELECT Title, Domestic_sales, International_sales
+    FROM Movies
+        JOIN boxoffice
+            ON Movies.id = boxoffice.Movie_id;
+
+    SELECT Title, Domestic_sales, International_sales
+    FROM Movies
+        JOIN boxoffice
+            ON Movies.id = boxoffice.Movie_id
+    WHERE International_sales > Domestic_sales;
+
+    SELECT Title, Rating
+    FROM Movies
+        JOIN boxoffice
+            ON Movies.id = boxoffice.Movie_id
+    ORDER BY Rating DESC;
+
+### 9. OUTER JOINS
+
+### 10. NULLS
