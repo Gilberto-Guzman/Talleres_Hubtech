@@ -18,6 +18,8 @@ print(type(player_one))
 # Clase
 class Computadora:
 
+    has_keyboard = True
+
     # Self (this): Identifica la instancia actual
     def __init__ (self, color, procesador, pulgadas, cantidad_ram, cantidad_rom):
 

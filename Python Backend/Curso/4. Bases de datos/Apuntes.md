@@ -128,4 +128,40 @@ https://sqlbolt.com/
 
 ### 9. OUTER JOINS
 
+    SELECT DISTINCT Building FROM Employees;
+
+    SELECT * FROM buildings ;
+
+    SELECT DISTINCT Building_name, Role
+    FROM Buildings
+    LEFT JOIN Employees
+        ON Building_name = Building;
+
 ### 10. NULLS
+
+    SELECT Name, Role FROM Employees
+    WHERE Building IS NULL;
+
+### 11. Consultas con Expresiones
+
+    SELECT DISTINCT Building_name
+    FROM Buildings
+    LEFT JOIN Employees
+        ON Building_name = Building
+    WHERE Role IS NULL;
+
+### 12. Aggregates
+
+### 13. Orden de Ejecución de una Query
+
+### 14. Inserting Rows
+
+### 15. Updating Rows
+
+### 16. Deleting Rows
+
+### 17. Creating Tables
+
+### 18. Altering Tables
+
+### 19. Dropping Tables
