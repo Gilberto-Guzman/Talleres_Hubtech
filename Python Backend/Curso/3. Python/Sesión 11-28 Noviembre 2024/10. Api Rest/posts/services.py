@@ -35,15 +35,8 @@ class PostService:
 
     def create_post(self, title, body, user_id):
         try:
-            payload = {
-                "title": title,
-                "body": body,
-                "user_Id": user_id
-            }
-            response = requests.post(f"{self.base_url}/posts", json=payload)
-            post_data = response.json()
-            # return post_data
-            return Post.from_dict(post_data)
+            response = self.json_place_holder_service.create_post(title, body, user_id)
+            return Post.from_dict(response)
         
         except requests.exceptions.RequestException as e:
             print(f"Error al crear la publicación: {e}")
