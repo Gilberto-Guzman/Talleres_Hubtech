@@ -14,8 +14,14 @@ class CommentService:
             print(f"Error al obtener las publicaciones: {e}")
             return []
     
-    def create_comments(self):
-        pass
+
+    def create_comment(self, post_id, name, email, body):
+        try:
+            response = self.json_place_holder_service.create_comment(post_id, name, email, body)
+            return Comment.from_dict(response)
+        except requests.exceptions.RequestException as e:
+            print(f"Error al crear el comentario: {e}")
+            return None
 
     def get_all_comments_by_post(self):
         pass

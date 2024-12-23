@@ -18,7 +18,7 @@ class Comment:
     @classmethod
     def from_dict(cls, data):
         return cls (
-            post_id = data.get(""),
+            post_id = data.get("postId"),
             comment_id = data.get("id"),
             name = data.get("name"),
             email = data.get("email"),

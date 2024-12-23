@@ -36,6 +36,22 @@ class JSONPlaceHolderAdapter:
         except requests.exceptions.RequestException as e:
             print(f"Error al crear la publicación: {e}")
             return None
+    
+    def create_comment(self, post_id, name, email, body):
+        try:
+            payload = {
+                "postId": post_id,
+                "name": name,
+                "email": email,
+                "body": body
+            }
+            response = requests.post(f"{self.base_url}/comments", json=payload)
+            response_json = response.json()
+            return response_json
+        
+        except requests.exceptions.RequestException as e:
+            print(f"Error al crear la publicación: {e}")
+            return None
         
     def get_all_comments(self):
         try:
