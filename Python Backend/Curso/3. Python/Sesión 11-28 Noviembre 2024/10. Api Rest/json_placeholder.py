@@ -37,6 +37,24 @@ class JSONPlaceHolderAdapter:
             print(f"Error al crear la publicación: {e}")
             return None
     
+    def get_all_comments(self):
+        try:
+            response = requests.get(f"{self.base_url}/comments")
+            response_json = response.json()
+            return response_json
+        except requests.exceptions.RequestException as e:
+            print(f"Error al obtener las publicaciones: {e}")
+            return []
+
+    def get_all_comments_by_post(self, post_id):
+        try:
+            response = requests.get(f"{self.base_url}/comments", params={"postId": post_id})
+            response_json = response.json()
+            return response_json
+        except requests.exceptions.RequestException as e:
+            print(f"Error al obtener las publicaciones del usuario {post_id}: {e}")
+            return None
+
     def create_comment(self, post_id, name, email, body):
         try:
             payload = {
@@ -52,12 +70,5 @@ class JSONPlaceHolderAdapter:
         except requests.exceptions.RequestException as e:
             print(f"Error al crear la publicación: {e}")
             return None
-        
-    def get_all_comments(self):
-        try:
-            response = requests.get(f"{self.base_url}/comments")
-            response_json = response.json()
-            return response_json
-        except requests.exceptions.RequestException as e:
-            print(f"Error al obtener las publicaciones: {e}")
-            return []
+
+    
